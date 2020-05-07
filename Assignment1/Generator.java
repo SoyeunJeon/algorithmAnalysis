@@ -22,13 +22,12 @@ public class Generator {
         double density = (double)edge/vertice;
         double desiredDensity;
         
-        // createDesiredDensity("facebook_combined_0.01", 0.01);
-        // createDesiredDensity("facebook_combined_0.1", 0.1);
-        // createDesiredDensity("facebook_combined_0.2", 0.2);
-        // createDesiredDensity("facebook_combined_0.3", 0.3);
-        // createDesiredDensity("facebook_combined_0.4", 0.4);
-        // createDesiredDensity("facebook_combined_0.5", 0.5);
-        // createDesiredDensity("facebook_combined_0.6", 0.6);
+        createDesiredDensity("facebook_combined_0.01", 0.01);
+        createDesiredDensity("facebook_combined_0.1", 0.1);
+        createDesiredDensity("facebook_combined_0.2", 0.2);
+        createDesiredDensity("facebook_combined_0.05", 0.05);
+        createDesiredDensity("facebook_combined_0.15", 0.15);
+        createDesiredDensity("facebook_combined_0.25", 0.25);
 
         
         generateVerticeData("small_AV", small_input);
@@ -105,37 +104,37 @@ public class Generator {
         
     }
     
-    
-    // private static void increaseDensity(String fileName, double desiredDensity) {
-    //     ArrayList<String> current_array = new ArrayList<>();
-    //     // this is wrong..... need to 
-    //     // increasing density by adding more edges to the file
-    //     double numOfInput = (desiredDensity * (vertices.size() * (vertices.size()-1)))/2;
-    //     int sizeOfInput = (int)numOfInput - edges.size();
+    /** 
+    private static void increaseDensity(String fileName, double desiredDensity) {
+        ArrayList<String> current_array = new ArrayList<>();
+        // this is wrong..... need to 
+        // increasing density by adding more edges to the file
+        double numOfInput = (desiredDensity * (vertices.size() * (vertices.size()-1)))/2;
+        int sizeOfInput = (int)numOfInput - edges.size();
         
-    //     try {
-    //         outputStream = new PrintWriter(new File(fileName + ".txt"));
-    //         for(int i = 0; i < edges.size(); i++) {
-    //             outputStream.printf(edges.get(i) + "\n");
-    //         }
-    //         while(current_array.size() < sizeOfInput) {
-    //             int vertice1 = random.nextInt(vertices.size());
-    //             int vertice2 = random.nextInt(vertices.size());
+        try {
+            outputStream = new PrintWriter(new File(fileName + ".txt"));
+            for(int i = 0; i < edges.size(); i++) {
+                outputStream.printf(edges.get(i) + "\n");
+            }
+            while(current_array.size() < sizeOfInput) {
+                int vertice1 = random.nextInt(vertices.size());
+                int vertice2 = random.nextInt(vertices.size());
 
-    //             if(!edges.contains(Integer.toString(vertice1) + " " + Integer.toString(vertice2))) {
-    //                 outputStream.printf(Integer.toString(vertice1) + " " + Integer.toString(vertice2) + "\n");
-    //                 current_array.add(Integer.toString(vertice1) + " " + Integer.toString(vertice2)); 
-    //             }
-    //         }
-    //         current_array.clear();
-    //         outputStream.close();
-    //     }
-    //     catch (FileNotFoundException e) {
-    //         System.out.println("Error creating file");
-    //     } 
-    // }
+                if(!edges.contains(Integer.toString(vertice1) + " " + Integer.toString(vertice2))) {
+                    outputStream.printf(Integer.toString(vertice1) + " " + Integer.toString(vertice2) + "\n");
+                    current_array.add(Integer.toString(vertice1) + " " + Integer.toString(vertice2)); 
+                }
+            }
+            current_array.clear();
+            outputStream.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Error creating file");
+        } 
+    }
     
-    
+    **/
     private static void generateVerticeData(String fileName, int sizeOfInput) {
         
         try {
@@ -181,7 +180,8 @@ public class Generator {
         try {
             outputStream = new PrintWriter(new File(fileName + ".in"));
             for(int i = 0; i < sizeOfInput; i++) {
-                outputStream.printf("N " + vertices.get(random.nextInt(vertices.size())) + " " + vertices.get(random.nextInt(vertices.size())) + "\n");
+                // outputStream.printf("N " + vertices.get(random.nextInt(vertices.size())) + " " + vertices.get(random.nextInt(vertices.size())) + "\n");
+                outputStream.printf("N " + vertices.get(random.nextInt(vertices.size()))+"\n");
             }
             outputStream.close();
         }
@@ -207,7 +207,7 @@ public class Generator {
         try {
             outputStream = new PrintWriter(new File(fileName + ".in"));
             for(int i = 0; i < sizeOfInput; i++) {
-                outputStream.printf("RV " + vertices.get(random.nextInt(vertices.size())) + " " + vertices.get(random.nextInt(vertices.size())) + "\n");
+                outputStream.printf("RV " + vertices.get(random.nextInt(vertices.size())) + "\n");
             }
             outputStream.close();
         }
